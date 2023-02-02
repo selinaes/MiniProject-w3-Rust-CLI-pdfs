@@ -2,43 +2,41 @@
 [![Build binary release](https://github.com/noahgift/rdedupe/actions/workflows/release.yml/badge.svg)](https://github.com/noahgift/rdedupe/actions/workflows/release.yml)
 [![Clippy](https://github.com/noahgift/rdedupe/actions/workflows/lint.yml/badge.svg)](https://github.com/noahgift/rdedupe/actions/workflows/lint.yml)
 [![Rustfmt](https://github.com/noahgift/rdedupe/actions/workflows/rustfmt.yml/badge.svg)](https://github.com/noahgift/rdedupe/actions/workflows/rustfmt.yml)
+（To Modify）
 
-## RDedupe
+## Project 1: Rust CLI: Data Gathering - Finding the CDS pdfs and download them
 
-A Rust based deduplication tool
+A Rust based tool to download common data set PDFs through layers of links
 
 ### Goals
 
-* Build a multiplatform, fast deduplication tool that uses Rust parallelization.
+* Build a Rust Command-Line tool that downloads pdfs containing Common Data Set (CDS) for top US higher education institutions.
+* Later, the tool could be improved to extract certain information from the downloaded pdfs, and calculate certain statistics based on the extracted info.
 
-![hpc-threaded-data-engineering](https://user-images.githubusercontent.com/58792/215359439-243cf62a-e8b1-41fd-b83e-697d7e612657.png)
+![Architectural diagram](png link)（To Modify）
 
 
+#### Current Status (To Modify)
 
-#### Current Status
-
-* Added ![Rayon Parallization](https://user-images.githubusercontent.com/58792/209480753-d2452e39-f72b-43c2-8000-b2d9f18d8a33.png)
-* Added [progress bar](https://github.com/console-rs/indicatif)
-![Progress Bar](https://user-images.githubusercontent.com/58792/209585522-0f12445d-59ca-4e52-8cfd-764a00be6f90.png)
+* Added 
+* Added 
 
 
 
 
 #### Future Improvements
 
-* Add a GUI
-* Add a web interface
-* Fix GitHub Actions Build process to not fail silently!
-* Use Polars DataFrame and include statistics about files and generate a CSV report.
-* Store logs about actions performed across multiple runs
+* Extract 'first year enrollment' for all top 50 schools from each CDS pdfs
+* Calculate the percentage of first-year students attending US higher education who attends a top 50 school
 
-### Building and Running
+
+### Building and Running (to modify)
 
 * Build:  cd into rdedupe and run `make all`
 * Run:  `cargo run -- dedupe --path tests --pattern .txt`
 * Run tests:  `make test`
 
-### OS X Install
+### OS X Install (to modify)
 
 * Install rust via [rustup](https://rustup.rs/)
 * Add to `~/.cargo/config`
@@ -57,3 +55,13 @@ rustflags = [
 ]
 ```
 * run `make all` in rdedupe directory
+
+
+#### References
+
+* [example project repo: rdedupe](https://github.com/noahgift/rdedupe)
+* [rust-mlops-template](https://github.com/nogibjj/rust-mlops-template)
+* [US-Universities-CDS-link-summary(in Chinese)](https://aadps.net/2022/14616.html)
+* ['pdf-rs' crate docs](https://crates.io/crates/pdf/0.8.0)
+* ['reqwest' crate docs](https://docs.rs/reqwest/latest/reqwest/)
+
