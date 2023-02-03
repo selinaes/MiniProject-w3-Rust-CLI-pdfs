@@ -5,9 +5,9 @@ use clap::Parser;
 //add extended help
 #[clap(
     version = "1.0",
-    author = "Noah Gift",
-    about = "Finds duplicate files",
-    after_help = "Example: rdedupe search --path . --pattern .txt"
+    author = "Selina Liu",
+    about = "Downloads large amount of common data set pdfs from different hosts",
+    // after_help = "Example: rdedupe search --path . --pattern .txt"
 )]
 struct Cli {
     #[clap(subcommand)]
@@ -22,19 +22,19 @@ enum Commands {
         #[clap(long, default_value = "")]
         pattern: String,
     },
-    Dedupe {
-        #[clap(long, default_value = ".")]
-        path: String,
-        #[clap(long, default_value = "")]
-        pattern: String,
-    },
-    //create count with path and pattern defaults for both
-    Count {
-        #[clap(long, default_value = ".")]
-        path: String,
-        #[clap(long, default_value = "")]
-        pattern: String,
-    },
+    // Dedupe {
+    //     #[clap(long, default_value = ".")]
+    //     path: String,
+    //     #[clap(long, default_value = "")]
+    //     pattern: String,
+    // },
+    // //create count with path and pattern defaults for both
+    // Count {
+    //     #[clap(long, default_value = ".")]
+    //     path: String,
+    //     #[clap(long, default_value = "")]
+    //     pattern: String,
+    // },
 }
 
 fn main() {
@@ -42,8 +42,8 @@ fn main() {
     match cli.command {
         Some(Commands::Search { path, pattern }) => {
             println!("Searching for files in {} matching {}", path, pattern);
-            let files = rdedupe::walk(&path).unwrap();
-            let files = rdedupe::find(files, &pattern);
+            let files = cds::walk(&path).unwrap();
+            let files = cds::find(files, &pattern);
             //print count of files matching pattern
             println!("Found {} files matching {}", files.len(), pattern);
             //print files
@@ -51,23 +51,23 @@ fn main() {
                 println!("{}", file);
             }
         }
-        Some(Commands::Dedupe { path, pattern }) => {
-            //dedupe files matching a pattern
-            //display the progress bar using indicatif
-            println!("Deduping files in {} matching {}", path, pattern);
-            let result = rdedupe::run(&path, &pattern);
-            match result {
-                Ok(_) => println!("Deduping complete"),
-                Err(e) => println!("Error: {}", e),
-            }
-        }
-        Some(Commands::Count { path, pattern }) => {
-            //count files matching a pattern
-            println!("Counting files in {} matching {}", path, pattern);
-            let files = rdedupe::walk(&path).unwrap();
-            let files = rdedupe::find(files, &pattern);
-            println!("Found {} files matching {}", files.len(), pattern);
-        }
+        // Some(Commands::Dedupe { path, pattern }) => {
+        //     //dedupe files matching a pattern
+        //     //display the progress bar using indicatif
+        //     println!("Deduping files in {} matching {}", path, pattern);
+        //     let result = cds::run(&path, &pattern);
+        //     match result {
+        //         Ok(_) => println!("Deduping complete"),
+        //         Err(e) => println!("Error: {}", e),
+        //     }
+        // }
+        // Some(Commands::Count { path, pattern }) => {
+        //     //count files matching a pattern
+        //     println!("Counting files in {} matching {}", path, pattern);
+        //     let files = cds::walk(&path).unwrap();
+        //     let files = cds::find(files, &pattern);
+        //     println!("Found {} files matching {}", files.len(), pattern);
+        // }
 
         None => {
             println!("No command given");
