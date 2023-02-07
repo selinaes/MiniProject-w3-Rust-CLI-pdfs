@@ -62,6 +62,6 @@ rustflags = [
 * [example project repo: rdedupe](https://github.com/noahgift/rdedupe)
 * [rust-mlops-template](https://github.com/nogibjj/rust-mlops-template)
 * [US-Universities-CDS-link-summary(in Chinese)](https://aadps.net/2022/14616.html)
-* ['pdf-rs' crate docs](https://crates.io/crates/pdf/0.8.0)
+* ['lopdf' crate docs](https://docs.rs/lopdf/0.29.0/lopdf/)
 * ['reqwest' crate docs](https://docs.rs/reqwest/latest/reqwest/)
 

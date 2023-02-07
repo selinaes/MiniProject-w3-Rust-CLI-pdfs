@@ -1,3 +1,4 @@
+use cds::download_pdfs;
 //Searches a path for duplicate files
 use clap::Parser;
 
@@ -16,12 +17,7 @@ struct Cli {
 
 #[derive(Parser)]
 enum Commands {
-    Search {
-        #[clap(long, default_value = ".")]
-        path: String,
-        #[clap(long, default_value = "")]
-        pattern: String,
-    },
+    Download { url: String, folder: String },
     // Dedupe {
     //     #[clap(long, default_value = ".")]
     //     path: String,
@@ -40,16 +36,11 @@ enum Commands {
 fn main() {
     let cli = Cli::parse();
     match cli.command {
-        Some(Commands::Search { path, pattern }) => {
-            println!("Searching for files in {} matching {}", path, pattern);
-            let files = cds::walk(&path).unwrap();
-            let files = cds::find(files, &pattern);
-            //print count of files matching pattern
-            println!("Found {} files matching {}", files.len(), pattern);
-            //print files
-            for file in files {
-                println!("{}", file);
-            }
+        Some(Commands::Download { url, folder }) => {
+            //download files from a url
+            println!("Downloading files from {} to {}", url, folder);
+            let _result = download_pdfs(&url, &folder);
+            println!("Downloading complete");
         }
         // Some(Commands::Dedupe { path, pattern }) => {
         //     //dedupe files matching a pattern
@@ -68,7 +59,6 @@ fn main() {
         //     let files = cds::find(files, &pattern);
         //     println!("Found {} files matching {}", files.len(), pattern);
         // }
-
         None => {
             println!("No command given");
         }

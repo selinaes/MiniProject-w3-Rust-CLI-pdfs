@@ -4,14 +4,11 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-clap = {version="4.0.32", features=["derive","Parser"]}
-walkdir = "2.3.2"
+clap = {version="4.0.32", features=["derive"]}
 md5 = "0.7.0"
-rayon = "1.6.1"
-indicatif = {version = "*", features = ["rayon"]}
 reqwest = {version = "0.11.6", features = ["blocking", "json"]}
 select = "0.6.0"
-pdf = "0.8.0"
+lopdf = "0.29.0"
 
 [dev-dependencies]
 assert_cmd = "2"
