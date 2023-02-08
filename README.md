@@ -1,31 +1,22 @@
-[![Tests](https://github.com/noahgift/rdedupe/actions/workflows/tests.yml/badge.svg)](https://github.com/noahgift/rdedupe/actions/workflows/tests.yml)
-[![Build binary release](https://github.com/noahgift/rdedupe/actions/workflows/release.yml/badge.svg)](https://github.com/noahgift/rdedupe/actions/workflows/release.yml)
-[![Clippy](https://github.com/noahgift/rdedupe/actions/workflows/lint.yml/badge.svg)](https://github.com/noahgift/rdedupe/actions/workflows/lint.yml)
-[![Rustfmt](https://github.com/noahgift/rdedupe/actions/workflows/rustfmt.yml/badge.svg)](https://github.com/noahgift/rdedupe/actions/workflows/rustfmt.yml)
-（To Modify）
+## Mini Project week3: Rust CLI: Downloading PDFs from a URL
 
-## Project 1: Rust CLI: Data Gathering - Finding the CDS pdfs and download them
-
-A Rust based tool to download common data set PDFs through layers of links
+A Rust CLI tool to download PDFs providing a URL and a folder name
 
 ### Goals
 
-* Build a Rust Command-Line tool that downloads pdfs containing Common Data Set (CDS) for top US higher education institutions.
-* Later, the tool could be improved to extract certain information from the downloaded pdfs, and calculate certain statistics based on the extracted info.
+* Build a Rust Command-Line tool that downloads pdfs linked in a certain webpage
 
-![Architectural diagram](png link)（To Modify）
 
 
 #### Current Status (To Modify)
 
-* Added 
-* Added 
+* Lint correctly, still has issue with the version fit of one of the crates, need to figure out later
 
 
 
 
 #### Future Improvements
-
+* Increase a step before download - go through a page filled with links, and figure out which among them has the data we want (and the pdfs we want). Excluding those with 404 not found
 * Extract 'first year enrollment' for all top 50 schools from each CDS pdfs
 * Calculate the percentage of first-year students attending US higher education who attends a top 50 school
 
@@ -36,25 +27,6 @@ A Rust based tool to download common data set PDFs through layers of links
 * Run:  `cargo run -- dedupe --path tests --pattern .txt`
 * Run tests:  `make test`
 
-### OS X Install (to modify)
-
-* Install rust via [rustup](https://rustup.rs/)
-* Add to `~/.cargo/config`
-
-```bash
-[target.x86_64-apple-darwin]
-rustflags = [
-  "-C", "link-arg=-undefined",
-  "-C", "link-arg=dynamic_lookup",
-]
-
-[target.aarch64-apple-darwin]
-rustflags = [
-  "-C", "link-arg=-undefined",
-  "-C", "link-arg=dynamic_lookup",
-]
-```
-* run `make all` in rdedupe directory
 
 
 #### References
